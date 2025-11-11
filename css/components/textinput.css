@@ -1,0 +1,42 @@
+/* Text Input Component Styles */
+.text-input-container {
+    max-width: 100%;
+}
+
+#textInput {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #e2e8f0;
+    border-radius: 10px;
+    font-size: 16px;
+    font-family: inherit;
+    resize: vertical;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#textInput:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+#textInput::placeholder {
+    color: #a0aec0;
+}
+
+.text-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.char-count {
+    color: #718096;
+    font-size: 14px;
+}
+
+.char-count.warning {
+    color: #e53e3e;
+    font-weight: bold;
+}

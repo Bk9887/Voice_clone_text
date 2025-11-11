@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VoiceCloneText - Generate Text in Your Own Voice</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/components/recorder.css">
+    <link rel="stylesheet" href="css/components/text-input.css">
+    <link rel="stylesheet" href="css/components/player.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <h1>🎙️ VoiceCloneText</h1>
+            <p>Generate any text in your own voice</p>
+        </header>
+
+        <!-- Recording Section -->
+        <section class="recorder-section" id="recorderSection">
+            <h2>1. Record Your Voice</h2>
+            <div class="recorder-container">
+                <div class="recorder-display">
+                    <div class="waveform" id="waveform"></div>
+                    <div class="recording-status" id="recordingStatus">
+                        Ready to record
+                    </div>
+                    <div class="timer" id="timer">00:00</div>
+                </div>
+                
+                <div class="recorder-controls">
+                    <button id="startRecordBtn" class="btn btn-primary">
+                        🎤 Start Recording (7s)
+                    </button>
+                    <button id="stopRecordBtn" class="btn btn-secondary" disabled>
+                        ⏹️ Stop Recording
+                    </button>
+                    <button id="playRecordedBtn" class="btn btn-outline" disabled>
+                        ▶️ Play Recording
+                    </button>
+                </div>
+                
+                <div class="sample-text">
+                    <p><strong>Sample text to read:</strong> "Hello, this is a sample recording of my voice for voice cloning."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Text Input Section -->
+        <section class="text-input-section" id="textInputSection">
+            <h2>2. Enter Text to Generate</h2>
+            <div class="text-input-container">
+                <textarea 
+                    id="textInput" 
+                    placeholder="Type any text here that you want to hear in your voice..."
+                    rows="5"
+                ></textarea>
+                <div class="text-controls">
+                    <div class="char-count">
+                        <span id="charCount">0</span> characters
+                    </div>
+                    <button id="clearTextBtn" class="btn btn-outline">
+                        🗑️ Clear
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Voice Settings -->
+        <section class="settings-section">
+            <h2>3. Voice Settings</h2>
+            <div class="settings-container">
+                <div class="setting-item">
+                    <label for="moodSlider">Voice Mood:</label>
+                    <select id="moodSlider" class="mood-selector">
+                        <option value="normal">Normal</option>
+                        <option value="happy">Happy</option>
+                        <option value="sad">Sad</option>
+                        <option value="robotic">Robotic</option>
+                    </select>
+                </div>
+                <div class="setting-item">
+                    <label for="pitchSlider">Pitch Adjustment:</label>
+                    <input type="range" id="pitchSlider" min="0.5" max="2" step="0.1" value="1">
+                    <span id="pitchValue">Normal</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Generate & Output Section -->
+        <section class="output-section">
+            <h2>4. Generate & Listen</h2>
+            <div class="output-controls">
+                <button id="generateBtn" class="btn btn-success" disabled>
+                    🎵 Generate Voice Clone
+                </button>
+                <button id="downloadBtn" class="btn btn-outline" disabled>
+                    💾 Download Audio
+                </button>
+            </div>
+
+            <div class="audio-comparison">
+                <div class="audio-item">
+                    <h3>Your Original Recording</h3>
+                    <audio id="originalAudio" controls></audio>
+                </div>
+                <div class="audio-item">
+                    <h3>Generated Voice Clone</h3>
+                    <audio id="generatedAudio" controls></audio>
+                    <div class="similarity-score" id="similarityScore">
+                        Similarity: --%
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Loading State -->
+        <div class="loading-overlay" id="loadingOverlay">
+            <div class="loading-spinner"></div>
+            <p>Generating your voice clone...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/audio-effects.js"></script>
+    <script src="js/modules/audio-player.js"></script>
+    <script src="js/modules/recorder.js"></script>
+    <script src="js/modules/text-input.js"></script>
+    <script src="js/modules/voice-simulator.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
