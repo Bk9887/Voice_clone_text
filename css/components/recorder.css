@@ -1,0 +1,92 @@
+/* Recorder Component Styles */
+.recorder-container {
+    text-align: center;
+}
+
+.recorder-display {
+    background: #f7fafc;
+    border: 2px dashed #cbd5e0;
+    border-radius: 10px;
+    padding: 30px;
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.waveform {
+    height: 80px;
+    background: #edf2f7;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Animated bars for recording visualization */
+.waveform.recording::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #667eea 20%, 
+        transparent 40%, 
+        #764ba2 60%, 
+        transparent 80%, 
+        #667eea 100%);
+    background-size: 200% 100%;
+    animation: waveAnimation 1s linear infinite;
+}
+
+@keyframes waveAnimation {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+.recording-status {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #4a5568;
+}
+
+.recording-status.recording {
+    color: #e53e3e;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: #2d3748;
+    font-family: 'Courier New', monospace;
+}
+
+.recorder-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.sample-text {
+    background: #ebf8ff;
+    border: 1px solid #90cdf4;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+.sample-text p {
+    margin: 0;
+    color: #2b6cb0;
+    font-style: italic;
+}

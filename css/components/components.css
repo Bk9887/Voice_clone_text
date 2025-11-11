@@ -1,0 +1,305 @@
+/*
+ * Voice Recorder Component Styles
+ * Styles for the voice recording interface and controls
+ */
+
+.recorder-section {
+    background: white;
+}
+
+.recorder-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.recorder-display {
+    background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+    border: 2px dashed #cbd5e0;
+    border-radius: 15px;
+    padding: 40px 30px;
+    margin-bottom: 25px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.recorder-display.recording {
+    border-color: #e53e3e;
+    background: linear-gradient(135deg, #fed7d7 0%, #feebeb 100%);
+    animation: pulse-border 2s infinite;
+}
+
+@keyframes pulse-border {
+    0%, 100% { border-color: #e53e3e; }
+    50% { border-color: #fc8181; }
+}
+
+/* Waveform visualization container */
+.waveform {
+    height: 100px;
+    background: #edf2f7;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #e2e8f0;
+}
+
+/* Animated bars for recording visualization */
+.waveform.recording::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, 
+        transparent 0%, 
+        #667eea 20%, 
+        transparent 40%, 
+        #764ba2 60%, 
+        transparent 80%, 
+        #667eea 100%);
+    background-size: 200% 100%;
+    animation: waveAnimation 1s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes waveAnimation {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Recording status text */
+.recording-status {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #4a5568;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.recording-status.recording {
+    color: #e53e3e;
+    animation: pulse-text 1.5s infinite;
+}
+
+@keyframes pulse-text {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.recording-status.success {
+    color: #38a169;
+}
+
+/* Timer display */
+.timer {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #2d3748;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    margin: 15px 0;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.timer.recording {
+    color: #e53e3e;
+}
+
+/* Recorder controls container */
+.recorder-controls {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+/* Individual recorder buttons */
+.recorder-btn {
+    min-width: 160px;
+    padding: 15px 25px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.recorder-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+}
+
+.record-btn {
+    background: linear-gradient(135deg, #e53e3e 0%, #c53030 100%);
+    color: white;
+}
+
+.record-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(229, 62, 62, 0.4);
+}
+
+.stop-btn {
+    background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+    color: white;
+}
+
+.stop-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(45, 55, 72, 0.4);
+}
+
+.play-btn {
+    background: linear-gradient(135deg, #38a169 0%, #2f855a 100%);
+    color: white;
+}
+
+.play-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(56, 161, 105, 0.4);
+}
+
+/* Sample text area */
+.sample-text {
+    background: #ebf8ff;
+    border: 2px solid #90cdf4;
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.sample-text p {
+    margin: 0;
+    color: #2b6cb0;
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.5;
+}
+
+.sample-text strong {
+    color: #2c5282;
+    font-weight: 700;
+}
+
+/* Recording duration indicator */
+.duration-indicator {
+    text-align: center;
+    margin-top: 15px;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.duration-indicator .progress {
+    width: 100%;
+    height: 6px;
+    background: #e2e8f0;
+    border-radius: 3px;
+    margin-top: 5px;
+    overflow: hidden;
+}
+
+.duration-indicator .progress-bar {
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
+}
+
+/* Recording quality indicator */
+.quality-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    color: #718096;
+    font-size: 0.9rem;
+}
+
+.quality-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #cbd5e0;
+}
+
+.quality-dot.active {
+    background: #48bb78;
+}
+
+.quality-dot.recording {
+    background: #e53e3e;
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.3; }
+}
+
+/* Responsive design for recorder */
+@media (max-width: 768px) {
+    .recorder-display {
+        padding: 30px 20px;
+    }
+    
+    .waveform {
+        height: 80px;
+    }
+    
+    .recording-status {
+        font-size: 1.1rem;
+    }
+    
+    .timer {
+        font-size: 2rem;
+    }
+    
+    .recorder-controls {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .recorder-btn {
+        width: 100%;
+        max-width: 280px;
+    }
+    
+    .sample-text {
+        padding: 15px;
+    }
+    
+    .sample-text p {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .recorder-display {
+        padding: 20px 15px;
+    }
+    
+    .waveform {
+        height: 60px;
+    }
+    
+    .timer {
+        font-size: 1.8rem;
+    }
+    
+    .recorder-btn {
+        padding: 12px 20px;
+        font-size: 1rem;
+    }
+}
